@@ -1,0 +1,31 @@
+﻿@model bool
+@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+    {
+        @Html.AntiForgeryToken()
+        if (Model == false)
+        {
+            <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+        }
+
+        else
+        {
+            <a data - toggle = "tooltip" data - placement = "top" title = "Logout" href = "javascript:document.getElementById('logoutForm').submit()" >
+
+
+                       <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+        </a>
+                    }
+
+
+
+}
+}
+else
+{
+        @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+  
+}
+

@@ -1,0 +1,84 @@
+@model IEnumerable<AgentMarket.Models.ApplicationUser>
+@using Faster.Notification
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutGentelella.cshtml";
+}
+
+@Styles.Render("~/bundles/DataTablecss")
+<div class="col-md-12 col-sm-12 col-xs-12">
+    @if (TempData["Aftersave"] != null)
+    {
+        Notification ns = TempData["Aftersave"] as Notification;
+        <script>
+            $(document).ready(function () {
+                new PNotify({
+                    title: '@ns.MsgHeader',
+                    text: '@ns.MsgText',
+                    type: '@ns.MsgType',
+                    styling: 'bootstrap3'
+                });
+            });
+        </script>
+    }
+</div>
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h3 class="pull-left">
+                List  of Items
+            </h3>
+            <div class="pull-right">
+                <a href="@Url.Action("Create")" class="btn bg-blue">
+                    <i class="fa fa-plus-square"></i>
+                    Add new
+                </a>
+                @*<button type="button" id="delete-selected" class="btn bg-red">
+                        <i class="fa fa-trash-o"></i>
+                        Delete (selected)
+                    </button>*@
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content table-responsive">
+
+
+            <table class="table table-bordered order-column" id="datatable-responsive">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserName)
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserName)
+                        </td>
+                        <td width="2%">
+                            @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "fa fa-pencil", title = "Edit This Record" })
+                        </td>
+                        <td width="2%">
+                            @Html.ActionLink(" ", "Details", new { id = item.Id }, new { @class = "fa fa-eye", title = "View Details Of This Record" })
+                        </td>
+                        <td width="2%">
+                            @Html.ActionLink(" ", "Delete", new { id = item.Id }, new { @class = "fa fa-trash", title = "Delete This Record" })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
+@Scripts.Render("~/bundles/DataTablescript")

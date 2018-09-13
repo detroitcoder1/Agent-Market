@@ -1,0 +1,199 @@
+﻿<#@ template language="C#" HostSpecific="True" #>
+<#@ output extension=".cshtml" #>
+<#@ include file="Imports.include.t4" #>
+@model IEnumerable<#= "<" + ViewDataTypeName + ">" #>
+@using Faster.Notification
+<#
+// The following chained if-statement outputs the file header code and markup for a partial view, a view using a layout page, or a regular view.
+if(IsPartialView) {
+#>
+
+<#
+} else if(IsLayoutPageSelected) {
+#>
+
+@{
+    ViewBag.Title = "<#= ViewName#>";
+<#
+if (!String.IsNullOrEmpty(LayoutPageFile)) {
+#>
+    Layout = "<#= LayoutPageFile#>";
+<#
+}
+#>
+}
+<#
+} else {
+#>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title><#= ViewName #></title>
+</head>
+<body>
+<#
+    PushIndent("    ");
+}
+#>
+
+@Styles.Render("~/bundles/DataTablecss")
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+              @if(TempData["Aftersave"] != null)
+                {
+                    Notification ns = TempData["Aftersave"] as Notification;
+                        <script>
+                            $(document).ready(function(){
+                                new PNotify({
+                                    title: '@ns.MsgHeader',
+                                    text: '@ns.MsgText',
+                                    type:  '@ns.MsgType',
+                                    styling: 'bootstrap3'
+                                });
+                            });
+                        </script>
+                }
+</div>
+<div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h3 class="pull-left">
+                    List  of Items
+                </h3>
+                <div class="pull-right">
+                    <a href="@Url.Action("Create")" class="btn bg-blue">
+                        <i class="fa fa-plus-square"></i>
+                        Add new
+                    </a>
+                    @*<button type="button" id="delete-selected" class="btn bg-red">
+                            <i class="fa fa-trash-o"></i>
+                            Delete (selected)
+                        </button>*@
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content table-responsive">
+
+
+ <table class="table table-bordered order-column" id="datatable-responsive">
+                    <thead>
+    <tr>
+<#
+IEnumerable<PropertyMetadata> properties = ModelMetadata.Properties;
+foreach (PropertyMetadata property in properties) {
+    if (property.Scaffold && !property.IsPrimaryKey && !property.IsForeignKey) {
+#>
+<#
+        // We do not want to show any association properties for which there is
+        // no associated foreign key.
+        if (property.IsAssociation && GetRelatedModelMetadata(property) == null) {
+            continue;
+        }
+		if (property.PropertyName.ToLower()=="cuserid" || property.PropertyName.ToLower()=="muserid" || property.PropertyName.ToLower()=="addeddate" || property.PropertyName.ToLower()=="modifieddate" || property.PropertyName.ToLower()=="ip" || property.PropertyName.ToLower()=="isactive" || property.PropertyName.ToLower()=="isdelete") {
+            continue;
+        }
+
+#>
+        <th>
+            @Html.DisplayNameFor(model => model.<#= GetValueExpression(property) #>)
+        </th>
+<#
+    }
+}
+#>
+         <th  style="display: none;">
+                            </th>
+                            <th style="display: none;"></th>
+                            <th style="display: none;"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+@foreach (var item in Model) {
+    <tr>
+<#
+foreach (PropertyMetadata property in properties) {
+    if (property.Scaffold && !property.IsPrimaryKey && !property.IsForeignKey) {
+#>
+<#
+        // We do not want to show any association properties for which there is
+        // no associated foreign key.
+        if (property.IsAssociation && GetRelatedModelMetadata(property) == null) {
+            continue;
+        }
+		if (property.PropertyName.ToLower()=="muserid" || property.PropertyName.ToLower()=="cuserid" || property.PropertyName.ToLower()=="addeddate" || property.PropertyName.ToLower()=="modifieddate" || property.PropertyName.ToLower()=="ip" || property.PropertyName.ToLower()=="isactive" || property.PropertyName.ToLower()=="isdelete") {
+            continue;
+        }
+#>
+        <td>
+            @Html.DisplayFor(modelItem => <#= "item." + GetValueExpression(property) #>)
+        </td>
+<#
+    }
+}
+
+string pkName = GetPrimaryKeyName();
+if (pkName != null) {
+#>
+    
+		 <td width="2%">
+                                    @Html.ActionLink(" ", "Edit", new { id=item.<#= pkName #> }, new { @class = "fa fa-pencil", title = "Edit This Record" }) 
+                                </td>
+                                <td width="2%">
+                                    @Html.ActionLink(" ", "Details", new { id=item.<#= pkName #> }, new { @class = "fa fa-eye", title = "View Details Of This Record" })
+                                </td>
+                                <td width="2%">
+                                    @Html.ActionLink(" ", "Delete", new { id=item.<#= pkName #> }, new { @class = "fa fa-trash", title = "Delete This Record" })
+                                </td>
+                          
+<#
+} else {
+#>
+
+                               <td width="2%">
+                                    @Html.ActionLink(" ", "Edit", new {/*  id=item.<#= pkName #> */}, new { @class = "fa fa-pencil", title = "Edit This Record" }) 
+                                </td>
+                                <td width="2%">
+                                    @Html.ActionLink(" ", "Details", new {/*  id=item.<#= pkName #> */}, new { @class = "fa fa-eye", title = "View Details Of This Record" })
+                                </td>
+                                <td width="2%">
+                                    @Html.ActionLink(" ", "Delete", new {/*  id=item.<#= pkName #> */}, new { @class = "fa fa-trash", title = "Delete This Record" })
+                                </td>
+      
+<#
+}
+#>
+    </tr>
+	
+}
+ </tbody>
+</table>
+ </div>
+        </div>
+    </div>
+@Scripts.Render("~/bundles/DataTablescript")
+<#
+// The following code closes the tag used in the case of a view using a layout page and the body and html tags in the case of a regular view page
+#>
+<#
+if(!IsPartialView && !IsLayoutPageSelected) {
+    ClearIndent();
+#>
+</body>
+</html>
+<#
+}
+#>
+<#@ include file="ModelMetadataFunctions.cs.include.t4" #>

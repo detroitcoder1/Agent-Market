@@ -1,0 +1,57 @@
+﻿@model AgentMarket.Models.CSSMapping
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>CSSMapping</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PrettyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrettyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CSSName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CSSName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CSSProperty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CSSProperty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CSSUnit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CSSUnit)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

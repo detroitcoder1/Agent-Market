@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Wiki for ContactGenerator</title>
+  <style>
+    a:link {
+      color: green;
+      background-color: transparent;
+      text-decoration: none;
+    }
+
+    a:visited {
+      color: green;
+      background-color: transparent;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: blue;
+      background-color: transparent;
+      text-decoration: underline;
+    }
+
+    a:active {
+      color: green;
+      background-color: transparent;
+      text-decoration: none;
+    }
+
+    body { font-family:Arial}
+  </style>
+
+
+
+</head>
+<body>
+
+
+
+  <h1>Wiki for DSharp.FrameWork.ContactGenerator</h1>
+  Library to generate Fake (Dummy) Data. Perfect for Unittesting, filling your objects or test database.<br />
+  <br />
+  - Generates: Json, XML, SQL, CSV<br />
+  - Country Specific Values: USA, Netherlands, Belgium.<br />
+  - Uses real Cities, Zipcodes, First and Lastnames.<br />
+  <br />
+  - Generator for creating lots of data.<br />
+  - SimpleGenerator for filling single fields.<br />
+  <br />
+  Current Available fields:<br />
+  - BirthDay, City, Color, Country, Date, Email, FirstName, Gender, Guid, HexColor, HexNumber, Housenumber, Housenumberextension, Infix, IP4, IP6, ISBN, LastName, Lorum Ipsum, MAC, MobileNumber, Number, Password, PhoneNumber, PinCode Prefix, Row, Street, Suffix, Time, Username, Zipcode.<br />
+  <br />
+
+  <h2>Index</h2>
+  <a href="#METHODS">Methods</a><br />
+
+  <a href="#FIELDS">Fields</a><br />
+  <a href="#LANGSUP">Language Support</a><br />
+  <a href="#REQUESTS">Requests</a><br />
+  <a href="#NOTE">Notes</a><br />
+  <a href="#CODEEXAMPLE">Code Example</a><br />
+  <h2 id="METHODS">Methods</h2>
+  Execute
+
+
+  <h2 id="FIELDS">Fields</h2>
+  <table cellspacing="0" cellpadding="5" border="1">
+    <tr style="background-color:lightblue;font-weight:bold"><td>Function</td><td>Type</td><td>Version</td></tr>
+    <tr><td>AccountNumber</td><td>String</td><td>1.3</td></tr>
+    <tr><td>Bank</td><td>String</td><td>1.3</td></tr>
+    <tr><td>BIC</td><td>String</td><td>1.3</td></tr>
+    <tr><td>BirthDay</td><td>DateTime</td><td>1.0</td></tr>
+    <tr><td>City</td><td>String</td><td>1.0</td></tr>
+    <tr><td>Color</td><td>String</td><td>1.2</td></tr>
+    <tr><td>Country</td><td>String</td><td>1.0</td></tr>
+    <tr><td>Date</td><td>DateTime</td><td>1.0</td></tr>
+    <tr><td>Email</td><td>String</td><td>1.0</td></tr>
+    <tr><td>FirstName</td><td>String</td><td>1.0</td></tr>
+    <tr><td>Gender</td><td>String</td><td>1.0</td></tr>
+    <tr><td>Guid</td><td>UniqueIdentifier</td><td>1.2</td></tr>
+    <tr><td>HexColor</td><td>String</td><td>1.2</td></tr>
+    <tr><td>HexNumber</td><td>String</td><td>1.2</td></tr>
+    <tr><td>Housenumber</td><td>Int</td><td>1.0</td></tr>
+    <tr><td>Housenumberextension</td><td>String</td><td>1.0</td></tr>
+    <tr><td>IBAN</td><td>String</td><td>1.3</td></tr>
+    <tr><td>Infix</td><td>String</td><td>1.0</td></tr>
+    <tr><td>IP4</td><td>String</td><td>1.2</td></tr>
+    <tr><td>IP6</td><td>String</td><td>1.2</td></tr>
+    <tr><td>ISBN</td><td>String</td><td>1.2</td></tr>
+    <tr><td>LastName</td><td>String</td><td>1.0</td></tr>
+    <tr><td>Lorum Ipsum</td><td>String</td><td>1.3</td></tr>
+    <tr><td>MAC</td><td>String</td><td>1.2</td></tr>
+    <tr><td>MobileNumber</td><td>String</td><td>1.0</td></tr>
+    <tr><td>Number</td><td>Int</td><td>1.0</td></tr>
+    <tr><td>Numbers</td><td>String</td><td>1.3</td></tr>
+    <tr><td>Password</td><td>String</td><td>1.2</td></tr>
+    <tr><td>PhoneNumber</td><td>String</td><td>1.0</td></tr>
+    <tr><td>PinCode</td><td>String</td><td>1.2</td></tr>
+    <tr><td>Prefix</td><td>String</td><td>1.0</td></tr>
+    <tr><td>Row</td><td>Int</td><td>1.2</td></tr>
+    <tr><td>Street</td><td>String</td><td>1.0</td></tr>
+    <tr><td>Suffix</td><td>String</td><td>1.0</td></tr>
+    <tr><td>Time</td><td>DateTime</td><td>1.2</td></tr>
+    <tr><td>Username</td><td>String</td><td>1.2</td></tr>
+    <tr><td>Zipcode</td><td>String</td><td>1.0</td></tr>
+  </table>
+  <h2 id="LANGSUP">Language Support</h2>
+  <table cellspacing="0" cellpadding="5" border="1">
+    <tr style="background-color:lightblue;font-weight:bold"><td>Function</td><td>BE</td><td>NL</td><td>US</td></tr>
+    <tr><td>Prefix</td><td>1.1</td><td>1.0</td><td>1.1</td></tr>
+    <tr><td>FirstName</td><td>1.1 (approx 5000)</td><td>1.0 (approx 5000)</td><td>1.1 (approx 3700)</td></tr>
+    <tr><td>Infix</td><td>1.1</td><td>1.0</td><td>1.1</td></tr>
+    <tr><td>LastName</td><td>1.1 (approx 2400)</td><td>1.0 (approx 2400)</td><td>1.1 (limited to 1000)</td></tr>
+    <tr><td>Suffix</td><td>1.1</td><td>1.0</td><td>1.1</td></tr>
+    <tr><td>Gender</td><td>1.1</td><td>1.0</td><td>1.1</td></tr>
+    <tr><td>Street</td><td>1.1 (limited to 40000)</td><td>1.0 (limited to 40000)</td><td>1.1 (limited to 40000)</td></tr>
+    <tr><td>Zipcode</td><td>1.1 (approx 2800)</td><td>1.0 (approx 5300)</td><td>1.1 (limited to 5000)</td></tr>
+    <tr><td>City</td><td>1.1 (approx 2700)</td><td>1.0 (approx 2400)</td><td>1.1 (limited to 5000)</td></tr>
+    <tr><td>Country</td><td>1.1</td><td>1.0</td><td>1.1</td></tr>
+    <tr><td>PhoneNumber</td><td>1.1</td><td>1.0</td><td>1.1</td></tr>
+    <tr><td>MobileNumber</td><td>1.1</td><td>1.0</td><td>1.1</td></tr>
+    <tr><td>AccountNumber</td><td>1.3</td><td>1.3</td><td>1.3</td></tr>
+    <tr><td>IBAN</td><td>1.3</td><td>1.3</td><td>na</td></tr>
+    <tr><td>Bank</td><td>1.3 (approx 185)</td><td>1.3 (approx 70)</td><td>1.3 (limited to 100)</td></tr>
+    <tr><td>BIC</td><td>1.3</td><td>1.3</td><td>na</td></tr>
+  </table>
+  <h2 id="REQUESTS">Requests</h2>
+  None at the moment.
+  <br />
+  <h2 id="NOTE">Note</h2>
+  Do not forget to change the properties on the resourcefile: Resources\ContactGenerator.dsrf<br />
+  - Build Action: Content<br />
+  - Copy to Output Directory: Copy if newer<br />
+  <br />
+  It's also possible to move this file to a location you prefer.<br />
+
+  <h2 id="CODEEXAMPLE">Code Example</h2>
+
+  {<br />
+  &nbsp;Generator gen = new Generator();<br />
+  &nbsp;gen.Settings.Language = Language.US;<br />
+  &nbsp;gen.DownloadLatestPackage();<br />
+  <br />
+  &nbsp;gen.RecordDefinition.AddFirstName("MyFieldFirstName");<br />
+  &nbsp;gen.RecordDefinition.AddLastName("MyLastName");<br />
+  <br />
+  &nbsp;if (gen.Generate(20))<br />
+  &nbsp;{<br />
+  &nbsp;gen.ExportOptions.IgnoreEmpty = true;<br />
+  &nbsp;string json = gen.Export(@"D:\output.json");<br />
+  &nbsp;}<br />
+  }<br />
+  <br />
+  Do you want to generate from your own resources?<br />
+  No Problem:<br />
+  <br />
+  gen.Settings.UseLocalResources = true;<br />
+  gen.Settings.PackageLocation = @"C:\PackageLocation";<br />
+  <br />
+  <div style="text-align:center">(c)2014-2015 DSharp - <a href="http://www.dsharp.nl" target="_blank">www.dsharp.nl</a></div>
+</body>
+</html>

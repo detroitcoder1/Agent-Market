@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Add Role to User";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Role Add to User</h2>
+
+@using (Html.BeginForm("AddRoleToUser", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="message-success">@ViewBag.ResultMessage</div>
+    <div class="form-group">
+        @Html.Label("Username", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownList("UserName", ViewBag.Users as SelectList, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Role name", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownList("RoleName", ViewBag.Roles as SelectList, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Save" />
+        </div>
+    </div>
+}
+
+
+
+<div class="hr"></div>
+@using (Html.BeginForm("GetRoles", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.Label("Username", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownList("UserName", ViewBag.Users as SelectList, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Get Roles for this User" />
+        </div>
+    </div>
+}
+
+@if (ViewBag.RolesForThisUser != null)
+{
+    <text>
+        <h3>Roles for this user </h3>
+        <ol>
+            @foreach (string s in ViewBag.RolesForThisUser)
+            {
+                <li>@s</li>
+            }
+        </ol>
+    </text>
+}

@@ -1,0 +1,8 @@
+﻿ @{
+    IEnumerable<AgentMarket.Models.MenuItem> items = ViewBag.MenuItems;
+    foreach (var x in items)
+    {
+        <li>@Html.ActionLink(x.Title, "Browse","Products")</li>
+    }
+}
+

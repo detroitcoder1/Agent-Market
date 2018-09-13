@@ -1,0 +1,13 @@
+﻿<h2>Your location</h2>
+@if (ViewBag.IPInfo.Certainty==0)
+{
+    <div>Sorry, your location couldn't be identified.</div>
+}
+else
+{
+    <div>
+        <div>City: @ViewBag.IPInfo.City</div>
+        <div>Country: @ViewBag.IPInfo.Country</div>
+        <div>Timezone: @ViewBag.IPInfo.TimeZone</div>
+    </div>
+}

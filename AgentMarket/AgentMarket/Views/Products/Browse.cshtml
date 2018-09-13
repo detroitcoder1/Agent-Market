@@ -1,0 +1,93 @@
+﻿@model IEnumerable<AgentMarket.Models.Product>
+
+@{
+    ViewBag.Title = "Browse";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1>Browse</h1>
+
+
+<div class="row text-center mg-0">
+    @Html.Hidden("hdnParamNames", "Products|Browse|Sample6List|tblSample6")@*Ex:  ControllerName|ActionName|tableList|tableName*@
+    @if (Model != null && Model.Count() > 0)
+    {
+        foreach (var product in Model)
+        {
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail hdnOverflow">
+                    <div style="width: auto; height:auto; "> <img src="@product.Thumbnail" /></div>
+
+                    <div class="fadeIn animated">
+                        <h4>@product.ProductName</h4>
+                        <p>
+                            @{ var columnValue = product.DescriptionHook1;}
+                            @if (columnValue.Length < 27)
+                            {@columnValue @Html.Raw("&nbsp;")
+                        }
+                        else
+                        { @columnValue}
+                        </p>
+                        @Html.ActionLink("Learn More", "SelectedProduct", new { id = product.Id }, htmlAttributes: new { @class = "btn btn-primary" })
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div>
+            No data
+        </div>
+    }
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 footer-about wow fadeInUp">
+                <h3>About Us</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
+                    Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper.
+                </p>
+                <p>
+                    <a class="scroll-link" href="#about-us">Learn More</a>
+                </p>
+            </div>
+            <div class="col-sm-4 footer-contact-info wow fadeInDown">
+                <h3>Contact Info</h3>
+                <p><i class="typcn typcn-map"></i> Via Rossini 10, 10136 Southfield MI</p>
+                <p><i class="typcn typcn-phone"></i> Phone: (248) 579-5585</p>
+                <p><i class="typcn typcn-mail"></i> Email: <a href="curtisbrock2@gmail.com">curtisbrock2@gmail.com</a></p>
+                <p><i class="typcn typcn-social-skype-outline"></i> Skype: marco_online</p>
+            </div>
+            <div class="col-sm-4 footer-social wow fadeInUp">
+                <h3>We're Social</h3>
+                <p>
+                    <a href="#"><i class="typcn typcn-social-facebook"></i></a>
+                    <a href="#"><i class="typcn typcn-social-instagram"></i></a>
+                    <a href="#"><i class="typcn typcn-social-twitter"></i></a>
+                    <a href="#"><i class="typcn typcn-social-youtube"></i></a>
+                    <a href="#"><i class="typcn typcn-social-google-plus"></i></a>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            @*<div class="col-sm-6 footer-copyright">
+                    &copy; Marco Bootstrap Template by <a href="http://azmind.com">AZMIND</a>
+                </div>*@
+            <div>
+
+                <a class="scroll-link" href="#top-content">Top</a>
+                <a class="scroll-link" href="#features">Features</a>
+                <a class="scroll-link" href="#pricing">Price</a>
+                <a href="#">Terms</a>
+                <a href="#">Privacy</a>
+
+            </div>
+        </div>
+    </div>
+</footer>

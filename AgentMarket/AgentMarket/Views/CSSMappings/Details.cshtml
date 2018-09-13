@@ -1,0 +1,51 @@
+﻿@model AgentMarket.Models.CSSMapping
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CSSMapping</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PrettyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrettyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CSSName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CSSName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CSSProperty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CSSProperty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CSSUnit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CSSUnit)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

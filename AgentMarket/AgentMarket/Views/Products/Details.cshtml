@@ -1,0 +1,195 @@
+﻿@model AgentMarket.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DynamicMenuItem.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DynamicMenuItem.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PartnerId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PartnerId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FeaturedDeal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FeaturedDeal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Thumbnail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Thumbnail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescriptionHook1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescriptionHook1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MainDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MainDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BulletPoint1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BulletPoint1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BulletPoint2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BulletPoint2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BulletPoint3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BulletPoint3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BulletPoint4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BulletPoint4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BulletPoint5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BulletPoint5)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BulletPoint6)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BulletPoint6)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescriptionHook2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescriptionHook2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescriptionLong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescriptionLong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OriginalPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OriginalPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SalePrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalePrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

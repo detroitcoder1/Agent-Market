@@ -1,0 +1,20 @@
+﻿@if (!Request.IsAuthenticated)
+{
+    List<SelectListItem> list = ViewBag.list;
+    <p>@Html.DropDownList("LanguageList", list, new { @class = "form-control", id="LanguageList" })</p>
+    <script>
+        $('select').on('change', function () {
+            var temp = $(this).val();
+            $.ajax({
+                type: "GET",
+                url: "/Language/ChangeCurrentCulture/" + temp
+            })
+                .done(function () {
+                    location.reload();
+                })
+                .fail(function () {
+                    alert("There was an error trying to set the language.");
+                })
+            });
+    </script>
+}

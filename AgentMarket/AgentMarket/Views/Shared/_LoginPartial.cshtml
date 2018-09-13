@@ -1,0 +1,50 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+<ul class="nav navbar-nav navbar-right">
+    @if (User.IsInRole("SuperDesigner"))
+    {
+        <li>
+            @Html.ActionLink("CSS Mappings", "Index", "CSSMappings")
+        </li>
+    }
+    @if (User.IsInRole("Designer"))
+    {
+        <li>
+            @Html.ActionLink("Site Design", "Index", "CSSMappingEntries")
+        </li>
+    }
+    @if (User.IsInRole("SuperModerator"))
+    {
+        <li>@Html.ActionLink("Upload", "Index", "Upload")</li>
+    }
+    @if (User.IsInRole("Administrator"))
+    {
+        <li>
+            @Html.ActionLink("Role Assignment", "AddRoleToUser", "Account")
+        </li>
+        <li>@Html.ActionLink("Dashboard", "Index", "Dashboard")</li>
+    }
+    @if (Request.IsAuthenticated)
+    {
+        <li>@Html.ActionLink("Support", "Support", "Home")</li>
+    }
+    @*<li>@Html.ActionLink("Browse", "Browse", "Products")</li>*@
+    <li>
+        @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
+    </li>
+    <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+</ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Sign Up", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Sign in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

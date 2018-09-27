@@ -173,8 +173,8 @@ namespace AgentMarket.Controllers
             await db.SaveChangesAsync();
             await Task.Factory.StartNew(() =>
             {
-                string imagePath = Server.MapPath("~\\CMSResources\\Images\\Item" + product.Id + ".jpg");
-                string thumbnailPath = Server.MapPath("~\\CMSResources\\Images\\ItemThumb" + product.Id + ".jpg");
+                string imagePath = Server.MapPath("~\\AgentResources\\Images\\Item" + product.Id + ".jpg");
+                string thumbnailPath = Server.MapPath("~\\AgentResources\\Images\\ItemThumb" + product.Id + ".jpg");
                 if (System.IO.File.Exists(imagePath))
                     System.IO.File.Delete(imagePath);
                 if (System.IO.File.Exists(thumbnailPath))

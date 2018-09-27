@@ -30,8 +30,8 @@ namespace AgentMarket.Models
         public virtual DbSet<Item> Items { get; set; }
         public virtual DbSet<Language> Languages { get; set; }
         public virtual DbSet<StaticMenuItem> StaticMenuItems { get; set; }
-        public virtual DbSet<CSSMapping> CSSMappings { get; set; }
-        public virtual DbSet<CSSMappingEntry> CSSMappingEntries { get; set; }
+        //public virtual DbSet<CSSMapping> CSSMappings { get; set; }
+        //public virtual DbSet<CSSMappingEntry> CSSMappingEntries { get; set; }
         public virtual DbSet<Product> Products { get; set; }
     }
 }

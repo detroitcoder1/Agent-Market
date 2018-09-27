@@ -62,27 +62,27 @@ namespace AgentMarket.Controllers
             return PartialView("_Language");
         }
 
-        [ChildActionOnly]
-        public ActionResult CSS(long? id)
-        {
-            var temp = context.CSSMappingEntries.Where(x => x.DynamicMenuItem_Id == null || x.DynamicMenuItem_Id == id).ToList();
-            if (temp.Count == 0)
-                ViewBag.CSS = string.Empty;
-            else
-            {
-                string result = temp.GroupBy(x => x.CSSMapping.CSSName)
-                                    .Select(x => new
-                                    {
-                                        CSSClass = x.Key,
-                                        CSSValues =
-                                            x.Select(y => y.CSSMapping.CSSProperty + ":" + y.Value + y.CSSMapping.CSSUnit + ";")
-                                            .Aggregate((y, z) => y + "\n" + z)
-                                    })
-                                    .Select(x => x.CSSClass + "{" + x.CSSValues + "}")
-                                    .Aggregate((x, y) => x + "\n" + y);
-                ViewBag.CSS = result;
-            }
-            return PartialView("_CSS");
-        }
-	}
+        //[ChildActionOnly]
+        //public ActionResult CSS(long? id)
+        //{
+        //    var temp = context.CSSMappingEntries.Where(x => x.DynamicMenuItem_Id == null || x.DynamicMenuItem_Id == id).ToList();
+        //    if (temp.Count == 0)
+        //        ViewBag.CSS = string.Empty;
+        //    else
+        //    {
+        //        string result = temp.GroupBy(x => x.CSSMapping.CSSName)
+        //                            .Select(x => new
+        //                            {
+        //                                CSSClass = x.Key,
+        //                                CSSValues =
+        //                                    x.Select(y => y.CSSMapping.CSSProperty + ":" + y.Value + y.CSSMapping.CSSUnit + ";")
+        //                                    .Aggregate((y, z) => y + "\n" + z)
+        //                            })
+        //                            .Select(x => x.CSSClass + "{" + x.CSSValues + "}")
+        //                            .Aggregate((x, y) => x + "\n" + y);
+        //        ViewBag.CSS = result;
+        //    }
+        //    return PartialView("_CSS");
+        //}
+    }
 }

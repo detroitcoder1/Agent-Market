@@ -125,7 +125,7 @@ namespace AgentMarket.Models
 
         public virtual Language Language { get; set; }
         public virtual ICollection<Item> Items { get; set; }
-        public virtual ICollection<CSSMappingEntry> CSSMappings { get; set; }
+        //public virtual ICollection<CSSMappingEntry> CSSMappings { get; set; }
     }
 
     [Table("StaticMenuItems")]

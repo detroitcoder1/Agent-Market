@@ -219,8 +219,6 @@
     </Compile>
     <Compile Include="SupportHub.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
-    <Compile Include="Controllers\CSSMappingEntriesController.cs" />
-    <Compile Include="Controllers\CSSMappingsController.cs" />
     <Compile Include="Controllers\DynamicMenuController.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
@@ -244,9 +242,8 @@
       <DependentUpon>20180829_CSSMappings.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\CMSDataModels.cs" />
-    <Compile Include="Models\CMSDataViewModels.cs" />
-    <Compile Include="Models\DesignModels.cs" />
+    <Compile Include="Models\DataModels.cs" />
+    <Compile Include="Models\DataViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SiteSystem.cs" />
@@ -607,10 +604,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Images\a4.jpg" />
-    <Content Include="Images\a7.jpg" />
-    <Content Include="Images\chinese letter art.png" />
-    <Content Include="Images\profile.jpg" />
     <Content Include="libs\Gentelella\css\custom.css" />
     <Content Include="libs\Gentelella\css\custom.min.css" />
     <Content Include="libs\Gentelella\images\back_disabled.png" />
@@ -4883,21 +4876,6 @@
     <Content Include="Views\DynamicMenu\Details.cshtml" />
     <Content Include="Views\DynamicMenu\Edit.cshtml" />
     <Content Include="Views\DynamicMenu\Index.cshtml" />
-    <Content Include="Views\Language\Create.cshtml" />
-    <Content Include="Views\Language\Delete.cshtml" />
-    <Content Include="Views\Language\Details.cshtml" />
-    <Content Include="Views\Language\Edit.cshtml" />
-    <Content Include="Views\Language\Index.cshtml" />
-    <Content Include="Views\CSSMappings\Create.cshtml" />
-    <Content Include="Views\CSSMappings\Delete.cshtml" />
-    <Content Include="Views\CSSMappings\Details.cshtml" />
-    <Content Include="Views\CSSMappings\Edit.cshtml" />
-    <Content Include="Views\CSSMappings\Index.cshtml" />
-    <Content Include="Views\CSSMappingEntries\Create.cshtml" />
-    <Content Include="Views\CSSMappingEntries\Delete.cshtml" />
-    <Content Include="Views\CSSMappingEntries\Details.cshtml" />
-    <Content Include="Views\CSSMappingEntries\Edit.cshtml" />
-    <Content Include="Views\CSSMappingEntries\Index.cshtml" />
     <Content Include="Views\Partial\_PartialMenu.cshtml" />
     <Content Include="Views\Partial\_Language.cshtml" />
     <Content Include="Views\Partial\_CSS.cshtml" />
@@ -4942,12 +4920,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="CMSResources\Images\" />
-    <Folder Include="CMSResources\Uploads\" />
+    <Folder Include="AgentResources\Images\" />
+    <Folder Include="AgentResources\Uploads\" />
     <Folder Include="Content\DataTables\extensions\Buttons\" />
     <Folder Include="Content\DataTables\extensions\Select\" />
-    <Folder Include="ObjectDatabase\" />
-    <Folder Include="Views\Sitemap\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

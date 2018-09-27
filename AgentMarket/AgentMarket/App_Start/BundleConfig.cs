@@ -13,7 +13,7 @@ namespace AgentMarket
 
             string ltecomponents = "~/Scripts/adminlte/components/";
             string lteplugins = "~/Scripts/adminlte/plugins/";
-            string lte = "~/Scripts/adminlte/";
+            //string lte = "~/Scripts/adminlte/";
 
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(

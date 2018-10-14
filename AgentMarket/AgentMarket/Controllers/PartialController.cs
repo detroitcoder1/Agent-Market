@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 
+
 namespace AgentMarket.Controllers
 {
     public class PartialController : Controller
@@ -41,9 +42,9 @@ namespace AgentMarket.Controllers
         public ActionResult Geolocation()
         {
             string ip = Request.ServerVariables["REMOTE_ADDR"];
-            IP2Geo.P2GeoSoapClient client = new IP2Geo.P2GeoSoapClient();
-            IP2Geo.IPInformation info = client.ResolveIP(ip, "0");
-            ViewBag.IPInfo = info;
+            //IP2Geo.P2GeoSoapClient client = new IP2Geo.P2GeoSoapClient();
+            //IP2Geo.IPInformation info = client.ResolveIP(ip, "0");
+            //ViewBag.IPInfo = info;
             return PartialView("_Geolocation");
         }
 

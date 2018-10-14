@@ -212,11 +212,6 @@
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
-    <Compile Include="Service References\IP2Geo\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="SupportHub.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\DynamicMenuController.cs" />
@@ -4817,16 +4812,6 @@
     <Content Include="Scripts\tinymce\tinymce.js" />
     <Content Include="Scripts\tinymce\tinymce.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Service References\IP2Geo\AgentMarket.IP2Geo.IPInformation.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Service References\IP2Geo\ip2geo.disco" />
-    <None Include="Service References\IP2Geo\configuration91.svcinfo" />
-    <None Include="Service References\IP2Geo\configuration.svcinfo" />
-    <None Include="Service References\IP2Geo\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -4882,7 +4867,6 @@
     <Content Include="Views\Comments\_List.cshtml" />
     <Content Include="Views\Comments\_Create.cshtml" />
     <Content Include="Views\Home\Support.cshtml" />
-    <None Include="Service References\IP2Geo\ip2geo.wsdl" />
     <Content Include="Views\Partial\_Geolocation.cshtml" />
     <Content Include="Views\Upload\Index.cshtml" />
     <Content Include="Views\Products\Create.cshtml" />
@@ -4927,9 +4911,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\IP2Geo\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

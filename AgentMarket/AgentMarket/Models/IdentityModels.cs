@@ -13,7 +13,6 @@ namespace AgentMarket.Models
         public DateTime BirthDate { get; set; }
         [ForeignKey("Language")]
         public short? Language_Id { get; set; }
-        
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual Language Language { get; set; }
     }

@@ -196,6 +196,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\API\DynamicMenuController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\DashController.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\SitemapController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
@@ -4908,6 +4910,7 @@
     <Folder Include="AgentResources\Uploads\" />
     <Folder Include="Content\DataTables\extensions\Buttons\" />
     <Folder Include="Content\DataTables\extensions\Select\" />
+    <Folder Include="Views\Dash\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

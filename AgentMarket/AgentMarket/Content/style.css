@@ -225,7 +225,7 @@ img { max-width: 100%; }
 
 /***** Top content *****/
 
-./*inner-bg {
+.inner-bg {
     margin-top: 80px;
     padding: 60px 0 100px 0;
 }
@@ -309,7 +309,7 @@ img { max-width: 100%; }
 }
 
 
-/***** Features *****/
+/***** Features ****
 
 .app-features {
 	padding-bottom: 30px;

@@ -6,48 +6,59 @@
     {
         @Html.AntiForgeryToken()
 
-        <ul class="nav navbar-nav navbar-right">
-            @if (User.IsInRole("SuperDesigner"))
-            {
-                <li>
-                    @Html.ActionLink("CSS Mappings", "Index", "CSSMappings")
-                </li>
-            }
-            @if (User.IsInRole("Designer"))
-            {
-                <li>
-                    @Html.ActionLink("Site Design", "Index", "CSSMappingEntries")
-                </li>
-            }
-            @if (User.IsInRole("SuperModerator"))
-            {
-                <li>@Html.ActionLink("Upload", "Index", "Upload")</li>
-            }
-            @if (User.IsInRole("Administrator"))
-            {
-                <li>
-                    @Html.ActionLink("Role Assignment", "AddRoleToUser", "Account")
-                </li>
-                <li>@Html.ActionLink("Dashboard", "Index", "Dash")</li>
-            }
-            @if (Request.IsAuthenticated)
-            {
-               
+<ul class="nav navbar-nav navbar-right">
+    @if (User.IsInRole("SuperDesigner"))
+    {
+        <li>
+            @Html.ActionLink("CSS Mappings", "Index", "CSSMappings")
+        </li>
+    }
+    @if (User.IsInRole("Designer"))
+    {
+        <li>
+            @Html.ActionLink("Site Design", "Index", "CSSMappingEntries")
+        </li>
+    }
+    @if (User.IsInRole("SuperModerator"))
+    {
+        <li>@Html.ActionLink("Upload", "Index", "Upload")</li>
+    }
+    @if (User.IsInRole("Administrator"))
+    {
+        <li>
+            @Html.ActionLink("Role Assignment", "AddRoleToUser", "Account")
+        </li>
+        <li>@Html.ActionLink("Dashboard", "Index", "Dash")</li>
+    }
+    @if (Request.IsAuthenticated)
+    {
 
-                <li>@Html.ActionLink("Dashboardx", "Index", "Dash")</li>
-            }
-            @*<li>@Html.ActionLink("Browse", "Browse", "Products")</li>*@
-            <li>
-                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
-            </li>
-            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-        </ul>
+
+        <li>@Html.ActionLink("Dashboard", "Index", "Dash")</li>
+    }
+    @*<li>@Html.ActionLink("Browse", "Browse", "Products")</li>*@
+   
+
+        <li>
+
+           @* @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage", @class = "typcn typcn-lock-user" })*@
+            <a href=@Url.Action("Manage","Account")><span aria-hidden="true" class="typcn typcn-user">Hello @User.Identity.GetUserName()</span></a>
+        </li>
+
+    <li><a href="javascript:document.getElementById('logoutForm').submit()" aria-hidden="true" class="typcn typcn-lock-open">Log off</a></li>
+    
+
+</ul>
     }
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Sign Up", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Sign in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
+<ul class="nav navbar-nav navbar-right">
+    <li><a href=@Url.Action("Register","Account")><span aria-hidden="true" class="glyphicon glyphicon-user" id="registerLink"> Register</span></a></li>
+    <li><a href=@Url.Action("Login","Account")><span aria-hidden="true" class="glyphicon glyphicon-log-in" id="loginLink"> SignIn</span></a></li>
+
+
+    @*<li>@Html.ActionLink("Sign Up", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Sign in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>*@
+</ul>
 }

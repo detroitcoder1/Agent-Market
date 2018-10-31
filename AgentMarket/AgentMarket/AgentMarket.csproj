@@ -248,6 +248,12 @@
     <Compile Include="Views\Products\pc.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AgentResources\Images\mojo1.png" />
+    <Content Include="AgentResources\Images\Mojo2.png" />
+    <Content Include="AgentResources\Images\Mojo3.png" />
+    <Content Include="AgentResources\Uploads\mojo1.png" />
+    <Content Include="AgentResources\Uploads\Mojo2.png" />
+    <Content Include="AgentResources\Uploads\Mojo3.png" />
     <Content Include="App_Data\CMSDatabase.mdf" />
     <Content Include="App_Data\CMSDatabase_log.ldf">
       <DependentUpon>CMSDatabase.mdf</DependentUpon>
@@ -4906,8 +4912,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="AgentResources\Images\" />
-    <Folder Include="AgentResources\Uploads\" />
     <Folder Include="Content\DataTables\extensions\Buttons\" />
     <Folder Include="Content\DataTables\extensions\Select\" />
     <Folder Include="Views\Dash\" />

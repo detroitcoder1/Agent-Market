@@ -14,8 +14,8 @@ namespace AgentMarket.Controllers
         // GET: /Upload/
         public ActionResult Index()
         {
-            string path = Request.Url.GetLeftPart(UriPartial.Authority) + "/CMSResources/Uploads/";
-            IEnumerable<string> files = Directory.EnumerateFiles(Server.MapPath("~/CMSResources/Uploads")).Select(x => path + Path.GetFileName(x));
+            string path = Request.Url.GetLeftPart(UriPartial.Authority) + "/AgentMarketResources/Uploads/";
+            IEnumerable<string> files = Directory.EnumerateFiles(Server.MapPath("~/AgentMarketResources/Uploads")).Select(x => path + Path.GetFileName(x));
             ViewBag.Files = files;
             return View();
         }

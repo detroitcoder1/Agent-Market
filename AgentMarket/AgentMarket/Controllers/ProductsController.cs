@@ -27,16 +27,18 @@ namespace AgentMarket.Controllers
         private Repository<Product> rdb = new Repository<Product>(new ApplicationDbContext());
 
         // GET: /Items/
-        [Authorize(Roles = "Administrator")]
+        //[Authorize(Roles = "Administrator")]
         public ActionResult Index()
         {
-
+            string path = Request.Url.GetLeftPart(UriPartial.Authority) + "/AgentMarketResources/Uploads/";
+            IEnumerable<string> files = Directory.EnumerateFiles(Server.MapPath("~/AgentMarketResources/Uploads")).Select(x => path + Path.GetFileName(x));
+            ViewBag.Files = files;
 
             return View(rdb.GetAll().ToList());
         }
 
         // GET: /Items/Details/5
-        [Authorize(Roles = "Administrator")]
+        //[Authorize(Roles = "Administrator")]
         public ActionResult Details(int id)
         {
             Product product = rdb.GetById(id);
@@ -95,34 +97,25 @@ namespace AgentMarket.Controllers
             //Work to do...
             if (ModelState.IsValid)
             {
-                Product temp = new Product { ProductName = Product.ProductName,FeaturedDeal= Product.FeaturedDeal, MainDescription=Product.MainDescription, DescriptionHook1= Product.DescriptionHook1, DescriptionHook2 = Product.DescriptionHook2, DescriptionLong = Product.DescriptionLong, BulletPoint1 = Product.BulletPoint1,BulletPoint2=Product.BulletPoint2,BulletPoint3= Product.BulletPoint3, BulletPoint4 = Product.BulletPoint4, BulletPoint5 = Product.BulletPoint5, BulletPoint6 = Product.BulletPoint6, IsActive = Product.IsActive, OriginalPrice= Product.OriginalPrice, PostDate=Product.PostDate, SalePrice = Product.SalePrice, DynamicMenuItem_Id = Product.DynamicMenuItem_Id };
+                Product temp = new Product {ProductName = Product.ProductName,FeaturedDeal= Product.FeaturedDeal, MainDescription=Product.MainDescription, DescriptionHook1= Product.DescriptionHook1, DescriptionHook2 = Product.DescriptionHook2, DescriptionLong = Product.DescriptionLong, BulletPoint1 = Product.BulletPoint1,BulletPoint2=Product.BulletPoint2,BulletPoint3= Product.BulletPoint3, BulletPoint4 = Product.BulletPoint4, BulletPoint5 = Product.BulletPoint5, BulletPoint6 = Product.BulletPoint6, IsActive = Product.IsActive, OriginalPrice= Product.OriginalPrice, PostDate=Product.PostDate, SalePrice = Product.SalePrice, DynamicMenuItem_Id = Product.DynamicMenuItem_Id };
                 rdb.Insert(temp);
                 await db.SaveChangesAsync();
-                await Task.Factory.StartNew(() =>
-                {
-                    string host = Request.Url.GetLeftPart(UriPartial.Authority);
-                    temp.Image = host + "/CMSResources/Images/Item" + temp.Id + ".jpg";
-                    temp.Thumbnail = host + "/CMSResources/Images/ItemThumb" + temp.Id + ".jpg";
-                    string imagePath = Server.MapPath("~\\CMSResources\\Images\\Item" + temp.Id + ".jpg");
-                    string thumbnailPath = Server.MapPath("~\\CMSResources\\Images\\ItemThumb" + temp.Id + ".jpg");
-                    using (FileStream fileStream = new FileStream(imagePath, FileMode.CreateNew))
-                        Product.Image.InputStream.CopyTo(fileStream);
-                    using (Bitmap bmp = Bitmap.FromFile(imagePath) as Bitmap)
-                    {
-                        using (Bitmap newImage = new Bitmap(THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT))
-                        {
-                            using (Graphics gr = Graphics.FromImage(newImage))
-                            {
-                                gr.SmoothingMode = SmoothingMode.HighQuality;
-                                gr.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                                gr.PixelOffsetMode = PixelOffsetMode.HighQuality;
-                                gr.DrawImage(bmp, new Rectangle(0, 0, THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT));
-                            }
-                            newImage.Save(thumbnailPath);
-                        }
-                    }
-                    db.SaveChanges();
-                });
+                //await Task.Factory.StartNew(() =>
+                //{
+                //    try
+                //    {
+                //        if (temp.Image.ContentLength > 0)
+                //        {
+                //            var fileName = Path.GetFileName(temp.Image.FileName);
+                //            var path = Path.Combine(Server.MapPath("~/CMSResources/Uploads"), fileName);
+                //            if (System.IO.File.Exists(path))
+                //                path = Path.Combine(Server.MapPath("~/CMSResources/Uploads"), Path.GetFileNameWithoutExtension(fileName) + DateTime.Now.ToFileTime() + Path.GetExtension(fileName));
+                //            temp.Image.SaveAs(path);
+                //        }
+                //    }
+                //    catch { }
+                //    db.SaveChanges();
+                //});
                 return RedirectToAction("Index", new { id = Product.DynamicMenuItem_Id });
             }
 
@@ -159,6 +152,8 @@ namespace AgentMarket.Controllers
         {
 
             Product product = rdb.GetById(id);
+            rdb.Delete(product);
+            db.SaveChangesAsync();
 
             return View(product);
         }
@@ -198,6 +193,27 @@ namespace AgentMarket.Controllers
             var SelectedProduct = rdb.GetById(id);
             return View(SelectedProduct);
 
+        }
+
+
+        //
+        // POST: /Upload/Create
+        [HttpPost]
+        public ActionResult Create(HttpPostedFileBase file)
+        {
+            try
+            {
+                if (file.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    var path = Path.Combine(Server.MapPath("~/CMSResources/Uploads"), fileName);
+                    if (System.IO.File.Exists(path))
+                        path = Path.Combine(Server.MapPath("~/CMSResources/Uploads"), Path.GetFileNameWithoutExtension(fileName) + DateTime.Now.ToFileTime() + Path.GetExtension(fileName));
+                    file.SaveAs(path);
+                }
+            }
+            catch { }
+            return RedirectToAction("Index");
         }
 
 
